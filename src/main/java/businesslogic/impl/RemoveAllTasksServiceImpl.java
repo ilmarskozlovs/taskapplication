@@ -1,21 +1,22 @@
 package businesslogic.impl;
 
-import database.Database;
+import database.TaskDAO;
 import businesslogic.RemoveAllTasksService;
 import businesslogic.api.RemoveAllTasksRequest;
 import businesslogic.api.RemoveAllTasksResponse;
 
 public class RemoveAllTasksServiceImpl implements RemoveAllTasksService {
 
-    private Database database;
+    private TaskDAO taskDAO;
 
-    public RemoveAllTasksServiceImpl(Database database) {
-        this.database = database;
+    public RemoveAllTasksServiceImpl(TaskDAO taskDAO) {
+        this.taskDAO = taskDAO;
     }
 
     @Override
     public RemoveAllTasksResponse removeAllTasks(RemoveAllTasksRequest request) {
-        boolean removed = database.removeAllTasks(request.getTasks());
-        return new RemoveAllTasksResponse(removed);
+//        boolean removed = taskDAO.delete(request.getTasks());
+//        return new RemoveAllTasksResponse(removed);
+        return null;
     }
 }

@@ -1,19 +1,19 @@
 package businesslogic.impl;
 
-import database.Database;
+import database.TaskDAO;
 import businesslogic.TaskListService;
 import businesslogic.api.TaskListResponse;
 
 public class TaskListServiceImpl implements TaskListService {
 
-    private Database database;
+    private TaskDAO taskDAO;
 
-    public TaskListServiceImpl(Database database) {
-        this.database = database;
+    public TaskListServiceImpl(TaskDAO taskDAO) {
+        this.taskDAO = taskDAO;
     }
 
     @Override
     public TaskListResponse getTasks() {
-        return new TaskListResponse(database.getAllTasks());
+        return new TaskListResponse(taskDAO.getAll());
     }
 }

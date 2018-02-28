@@ -7,8 +7,8 @@ import businesslogic.impl.RemoveAllTasksServiceImpl;
 import businesslogic.impl.RemoveTaskServiceImpl;
 import businesslogic.impl.TaskListServiceImpl;
 import businesslogic.userinterface.*;
-import database.Database;
-import database.InMemoryDatabase;
+import database.TaskDAO;
+import database.jdbc.TaskDAOImpl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,12 +18,12 @@ public class TaskApplication {
 
     public static void main(String[] args) {
 
-        Database database = new InMemoryDatabase();
+        TaskDAO taskDAO = new TaskDAOImpl();
 
-        CreateTaskService createTaskService = new CreateTaskServiceImpl(database);
-        RemoveTaskService removeTaskService = new RemoveTaskServiceImpl(database);
-        RemoveAllTasksService removeAllTasksService = new RemoveAllTasksServiceImpl(database);
-        TaskListService taskListService = new TaskListServiceImpl(database);
+        CreateTaskService createTaskService = new CreateTaskServiceImpl(taskDAO);
+        RemoveTaskService removeTaskService = new RemoveTaskServiceImpl(taskDAO);
+        RemoveAllTasksService removeAllTasksService = new RemoveAllTasksServiceImpl(taskDAO);
+        TaskListService taskListService = new TaskListServiceImpl(taskDAO);
 
         Map<Integer, View> commands = new HashMap<>();
         commands.put(1, new CreateTaskView(createTaskService));

@@ -1,6 +1,6 @@
 package businesslogic.impl;
 
-import database.Database;
+import database.TaskDAO;
 import businesslogic.CreateTaskService;
 import businesslogic.api.CreateTaskRequest;
 import businesslogic.api.CreateTaskResponse;
@@ -8,10 +8,10 @@ import domain.Task;
 
 public class CreateTaskServiceImpl implements CreateTaskService {
 
-    private Database database;
+    private TaskDAO taskDAO;
 
-    public CreateTaskServiceImpl(Database database) {
-        this.database = database;
+    public CreateTaskServiceImpl(TaskDAO taskDAO) {
+        this.taskDAO = taskDAO;
     }
 
     @Override
@@ -19,7 +19,7 @@ public class CreateTaskServiceImpl implements CreateTaskService {
         Task task = new Task();
         task.setName(request.getName());
         task.setDescription(request.getDescription());
-        database.saveTask(task);
+        taskDAO.save(task);
         return new CreateTaskResponse(true);
     }
 }
