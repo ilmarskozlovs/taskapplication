@@ -3,14 +3,14 @@ package businesslogic.userinterface;
 import businesslogic.TaskListService;
 import businesslogic.api.TaskListResponse;
 import domain.Task;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PrintTaskListView implements View {
 
+    @Autowired
     private TaskListService taskListService;
-
-    public PrintTaskListView(TaskListService taskListService) {
-        this.taskListService = taskListService;
-    }
 
     @Override
     public void execute() {

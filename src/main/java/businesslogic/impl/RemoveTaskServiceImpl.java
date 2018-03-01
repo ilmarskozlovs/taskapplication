@@ -5,16 +5,16 @@ import businesslogic.RemoveTaskService;
 import businesslogic.api.RemoveTaskRequest;
 import businesslogic.api.RemoveTaskResponse;
 import domain.Task;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
-public class RemoveTaskServiceImpl implements RemoveTaskService{
+@Component
+class RemoveTaskServiceImpl implements RemoveTaskService{
 
+    @Autowired
     private TaskDAO taskDAO;
-
-    public RemoveTaskServiceImpl(TaskDAO taskDAO) {
-        this.taskDAO = taskDAO;
-    }
 
     @Override
     public RemoveTaskResponse removeByTitle(RemoveTaskRequest request) {

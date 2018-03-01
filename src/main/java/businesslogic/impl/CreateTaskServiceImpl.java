@@ -5,14 +5,13 @@ import businesslogic.CreateTaskService;
 import businesslogic.api.CreateTaskRequest;
 import businesslogic.api.CreateTaskResponse;
 import domain.Task;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-public class CreateTaskServiceImpl implements CreateTaskService {
+@Component
+class CreateTaskServiceImpl implements CreateTaskService {
 
-    private TaskDAO taskDAO;
-
-    public CreateTaskServiceImpl(TaskDAO taskDAO) {
-        this.taskDAO = taskDAO;
-    }
+    @Autowired private TaskDAO taskDAO;
 
     @Override
     public CreateTaskResponse createTaskResponse(CreateTaskRequest request) {

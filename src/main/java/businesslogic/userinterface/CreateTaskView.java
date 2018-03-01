@@ -2,16 +2,16 @@ package businesslogic.userinterface;
 
 import businesslogic.CreateTaskService;
 import businesslogic.api.CreateTaskRequest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
+@Component
 public class CreateTaskView implements View {
 
+    @Autowired
     private CreateTaskService createTaskService;
-
-    public CreateTaskView(CreateTaskService createTaskService) {
-        this.createTaskService = createTaskService;
-    }
 
     @Override
     public void execute() {

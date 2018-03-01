@@ -4,14 +4,14 @@ import database.TaskDAO;
 import businesslogic.RemoveAllTasksService;
 import businesslogic.api.RemoveAllTasksRequest;
 import businesslogic.api.RemoveAllTasksResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-public class RemoveAllTasksServiceImpl implements RemoveAllTasksService {
+@Component
+class RemoveAllTasksServiceImpl implements RemoveAllTasksService {
 
+    @Autowired
     private TaskDAO taskDAO;
-
-    public RemoveAllTasksServiceImpl(TaskDAO taskDAO) {
-        this.taskDAO = taskDAO;
-    }
 
     @Override
     public RemoveAllTasksResponse removeAllTasks(RemoveAllTasksRequest request) {

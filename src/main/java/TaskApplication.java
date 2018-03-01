@@ -1,14 +1,7 @@
-import businesslogic.CreateTaskService;
-import businesslogic.RemoveAllTasksService;
-import businesslogic.RemoveTaskService;
-import businesslogic.TaskListService;
-import businesslogic.impl.CreateTaskServiceImpl;
-import businesslogic.impl.RemoveAllTasksServiceImpl;
-import businesslogic.impl.RemoveTaskServiceImpl;
-import businesslogic.impl.TaskListServiceImpl;
 import businesslogic.userinterface.*;
-import database.TaskDAO;
-import database.jdbc.TaskDAOImpl;
+import configs.SpringAppConfig;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,18 +11,13 @@ public class TaskApplication {
 
     public static void main(String[] args) {
 
-        TaskDAO taskDAO = new TaskDAOImpl();
-
-        CreateTaskService createTaskService = new CreateTaskServiceImpl(taskDAO);
-        RemoveTaskService removeTaskService = new RemoveTaskServiceImpl(taskDAO);
-        RemoveAllTasksService removeAllTasksService = new RemoveAllTasksServiceImpl(taskDAO);
-        TaskListService taskListService = new TaskListServiceImpl(taskDAO);
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringAppConfig.class);
 
         Map<Integer, View> commands = new HashMap<>();
-        commands.put(1, new CreateTaskView(createTaskService));
-        commands.put(2, new RemoveTaskView(removeTaskService));
-        commands.put(3, new RemoveAllTasksView(removeAllTasksService));
-        commands.put(4, new PrintTaskListView(taskListService));
+        commands.put(1, applicationContext.getBean(CreateTaskView.class));
+        commands.put(2, applicationContext.getBean(PrintTaskListView.class));
+        commands.put(3, applicationContext.getBean(RemoveTaskView.class));
+        commands.put(4, applicationContext.getBean(RemoveAllTasksView.class));
 
 
         while (true) {

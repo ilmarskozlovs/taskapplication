@@ -3,6 +3,7 @@ package database.jdbc;
 import database.DBException;
 import database.TaskDAO;
 import domain.Task;
+import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,6 +14,7 @@ import java.util.Optional;
 
 import static domain.TaskBuilder.createTask;
 
+@Component
 public class TaskDAOImpl extends DAOImpl implements TaskDAO {
 
     @Override

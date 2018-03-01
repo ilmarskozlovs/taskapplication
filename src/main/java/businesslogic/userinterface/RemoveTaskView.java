@@ -3,16 +3,16 @@ package businesslogic.userinterface;
 import businesslogic.RemoveTaskService;
 import businesslogic.api.RemoveTaskRequest;
 import businesslogic.api.RemoveTaskResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
+@Component
 public class RemoveTaskView implements View{
 
+    @Autowired
     private RemoveTaskService removeTaskService;
-
-    public RemoveTaskView(RemoveTaskService removeTaskService) {
-        this.removeTaskService = removeTaskService;
-    }
 
     @Override
     public void execute() {

@@ -3,14 +3,14 @@ package businesslogic.impl;
 import database.TaskDAO;
 import businesslogic.TaskListService;
 import businesslogic.api.TaskListResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-public class TaskListServiceImpl implements TaskListService {
+@Component
+class TaskListServiceImpl implements TaskListService {
 
+    @Autowired
     private TaskDAO taskDAO;
-
-    public TaskListServiceImpl(TaskDAO taskDAO) {
-        this.taskDAO = taskDAO;
-    }
 
     @Override
     public TaskListResponse getTasks() {

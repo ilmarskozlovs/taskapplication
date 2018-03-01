@@ -1,14 +1,14 @@
 package businesslogic.userinterface;
 
 import businesslogic.RemoveAllTasksService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class RemoveAllTasksView implements View {
 
+    @Autowired
     private RemoveAllTasksService removeAllTasksService;
-
-    public RemoveAllTasksView(RemoveAllTasksService removeAllTasksService) {
-        this.removeAllTasksService = removeAllTasksService;
-    }
 
     @Override
     public void execute() {
