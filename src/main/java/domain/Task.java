@@ -1,9 +1,18 @@
 package domain;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "tasks")
 public class Task {
 
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(name = "name", nullable = false)
     private String name;
+    @Column(name = "description", nullable = false)
     private String description;
 
     public void setId(Long id) {

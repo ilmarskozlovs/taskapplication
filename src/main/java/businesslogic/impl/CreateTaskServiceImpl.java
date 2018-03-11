@@ -8,12 +8,15 @@ import domain.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
+
 @Component
 class CreateTaskServiceImpl implements CreateTaskService {
 
     @Autowired private TaskDAO taskDAO;
 
     @Override
+    @Transactional(Transactional.TxType.REQUIRES_NEW)
     public CreateTaskResponse createTaskResponse(CreateTaskRequest request) {
         Task task = new Task();
         task.setName(request.getName());

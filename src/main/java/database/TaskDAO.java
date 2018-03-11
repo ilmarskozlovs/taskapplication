@@ -15,7 +15,7 @@ public interface TaskDAO {
 
     void delete(Task task);
 
-    List<Task> getAll();
+    List getAll();
 
 //    List<Task> removeAll();
 

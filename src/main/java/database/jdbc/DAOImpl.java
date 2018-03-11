@@ -10,7 +10,7 @@ import java.util.Properties;
 
 public class DAOImpl {
 
-    private static final String DB_CONFIG_FILE = "resources.properties";
+    private static final String DB_CONFIG_FILE = "resources.database.properties";
 
     protected String jdbcUrl = null;
     protected String driverClass = null;
